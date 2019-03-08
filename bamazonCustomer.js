@@ -1,17 +1,11 @@
 require('mysql');
 
 var mysql = require("mysql");
+var config = require('./config.js');
 var inquirer = require("inquirer");
 
-var connection = mysql.createConnection({
-    host: "localhost",
-    // 3306 is default port for mysql. Changing it wont work.
-    port: 3306,
-    user: "root",
+var connection = mysql.createConnection(config);
 
-    password: "Ramozepdor1",
-    database: "bamazon"
-});
 
 connection.connect(function (err) {
     if (err) throw err;
@@ -50,6 +44,7 @@ function itemDisplay() {
             var newOrder = new Order(answers.product_id, answers.quantity);
 
 
+            //display item info:
             function itemInfo() {
                 connection.query("SELECT * FROM products WHERE item_id=?", [answers.product_id], function (err, res) {
                     if (err) throw err;
@@ -59,13 +54,16 @@ function itemDisplay() {
                     console.log('========================');
                 });
             };
+            console.log(itemInfo());
 
+
+            // this prints what the user answered for prompts:
             console.log('----------------');
             newOrder.printInfo();
             console.log('----------------');
 
-            console.log(itemInfo());
 
+            // displays total cost of the purchase to the user:
             function displayCost() {
                 connection.query("SELECT * FROM products WHERE item_id=?", [answers.product_id], function (err, res) {
                     if (err) throw err;
@@ -73,44 +71,50 @@ function itemDisplay() {
                         console.log("Total Cost: " + res[i].price * answers.quantity);
                     }
                     console.log('========================');
-                    // connection.end();
                 });
             };
-
             console.log(displayCost());
+
+
+
+
+
+            //=================================================
+            var newStock = parseInt(answers.quantity);
+            var amountAskedFor = answers.quantity;
+            for (i = 0; i < res.length; i++) {
+                var currentStock = res[i].stock_quantity;
+                var updatedStock = currentStock - amountAskedFor
+            }
+            //===================================================
+
+
+
+            //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++keep!!!!!
+            function updateStock() {
+                connection.query("UPDATE products SET stock_quantity =? WHERE item_id =?", [updatedStock, answers.product_id], function (err, res) {
+                    if (err) throw err;
+                    // for (i = 0; i < res.length; i++) {
+                        // var updatedStock = res[i].stock_quantity - answers.quantity
+                    // }
+                    console.log("Updated stock for this item: " + updatedStock);
+                    console.log('========================');
+                });
+                connection.end();
+            };
+            console.log(updateStock());
+            //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++keep!!!!!
+            //BELOW IS A TEST???
+
+
+
+
+
+
+
+
 
         });
 
-        // connection.end();
     })
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// function grabItem() {
-//     connection.query("SELECT * FROM products WHERE item_id=?", [userInp], function (err, res) {
-//         if (err) throw err;
-//         for (i=0;i<res.length;i++) {
-//             console.log("Item_ID: " + res[i].item_id + "|" + "Product_Name: " + res[i].product_name + "|" + "Department_Name: " + res[i].department_name + "|" + "Price: " + res[i].price + "|" + "Stock: " + res[i].stock_quantity);
-//         }
-//         console.log('========================');
-//         // connection.end();
-//     });
-// }
