@@ -79,10 +79,10 @@ function itemDisplay() {
 
 
             //=================================================
-            var amountAskedFor = answers.quantity;
+            // var amountAskedFor = answers.quantity;
             for (i = 0; i < res.length; i++) {
-                var currentStock = res[i].stock_quantity;
-                var updatedStock = currentStock - amountAskedFor
+                // var currentStock = res[i].stock_quantity;
+                var updatedStock = res[i].stock_quantity-answers.quantity;
             }
             //===================================================
 
