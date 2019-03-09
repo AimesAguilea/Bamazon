@@ -26,3 +26,6 @@ After a quantity is entered, a total amount for the purchase will be displayed. 
 
 
 ![JPG?!?!](https://github.com/AimesAguilea/Bamazon/blob/master/screenshots/startup.jpg)
+
+
+![JPG?!?!](https://github.com/AimesAguilea/Bamazon/blob/master/screenshots/purchasecomplet.jpg)
