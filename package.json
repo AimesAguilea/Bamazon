@@ -1,0 +1,25 @@
+{
+  "name": "bamazon",
+  "version": "1.0.0",
+  "description": "",
+  "main": "bamazonCustomer.js",
+  "dependencies": {
+    "inquirer": "^6.2.2",
+    "mysql": "^2.16.0",
+    "node": "^10.15.3"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "bamazonCustomer.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AimesAguilea/Bamazon.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AimesAguilea/Bamazon/issues"
+  },
+  "homepage": "https://github.com/AimesAguilea/Bamazon#readme"
+}
