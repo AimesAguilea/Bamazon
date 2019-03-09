@@ -14,7 +14,6 @@ connection.connect(function (err) {
     // connection.end();
 });
 
-var userInp = process.argv.slice(2).join(' ')
 
 function Order(product_id, quantity) {
     this.product_id = product_id;
@@ -100,8 +99,6 @@ function itemDisplay() {
             };
             console.log(updateStock());
             //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++keep!!!!!
-
-
 
 
         });
