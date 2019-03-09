@@ -25,4 +25,4 @@ After a quantity is entered, a total amount for the purchase will be displayed. 
 
 
 
-![Image of Yaktocat](https://github.com/AimesAguilea/Bamazon/screenshots/startUp.jpg)
+![JPG?!?!](https://github.com/AimesAguilea/Bamazon/blob/master/screenshots/startup.jpg)
