@@ -10,7 +10,7 @@ mysql
 
 inquirer
 
-## How to use the app:
+## How the app works:
 
 ### The user types into the command line:
 
