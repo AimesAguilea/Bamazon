@@ -78,9 +78,7 @@ function itemDisplay() {
 
 
 
-
             //=================================================
-            var newStock = parseInt(answers.quantity);
             var amountAskedFor = answers.quantity;
             for (i = 0; i < res.length; i++) {
                 var currentStock = res[i].stock_quantity;
@@ -94,9 +92,7 @@ function itemDisplay() {
             function updateStock() {
                 connection.query("UPDATE products SET stock_quantity =? WHERE item_id =?", [updatedStock, answers.product_id], function (err, res) {
                     if (err) throw err;
-                    // for (i = 0; i < res.length; i++) {
-                        // var updatedStock = res[i].stock_quantity - answers.quantity
-                    // }
+                    
                     console.log("Updated stock for this item: " + updatedStock);
                     console.log('========================');
                 });
@@ -104,12 +100,6 @@ function itemDisplay() {
             };
             console.log(updateStock());
             //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++keep!!!!!
-            //BELOW IS A TEST???
-
-
-
-
-
 
 
 
