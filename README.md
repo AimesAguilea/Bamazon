@@ -21,3 +21,8 @@ This displays 10 items to the user all with names and prices. The user is prompt
 If the user enters an id thats not valid, and error will occur. There will also be a notificaion if there is not enough in stock.
 
 After a quantity is entered, a total amount for the purchase will be displayed. A database will also be updated with the new stock info for that item.
+
+
+
+
+![Image of Yaktocat](https://github.com/AimesAguilea/Bamazon/screenshots/startUp.jpg)
