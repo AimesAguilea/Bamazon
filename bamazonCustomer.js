@@ -38,7 +38,7 @@ function promptUser() {
         type: 'input',
         name: 'item_id',
         message: 'Enter the ID for the item you would like to purchase.'
-    
+
     },
     {
         type: 'input',
@@ -56,35 +56,34 @@ function promptUser() {
 
         connection.query(queryStr, {
             item_id: item
-        }, function (err, data) {
+        }, function (err, res) {
             if (err) throw err;
 
 
-            if (data.length === 0) {
-                console.log(("\n Error: select ID\n"));
+            if (res.length === 0) {
+                console.log("\n Error: select ID\n");
                 itemDisplay();
             } else {
-                var itemData = data[0];
+                var itemData = res[0];
 
                 if (quantity <= itemData.stock_quantity) {
-                    console.log(('\n Item is in stock!!!\n'));
+                    console.log('\n Item is in stock!!!\n');
 
                     var newQueryStr = 'UPDATE products SET stock_quantity = ' + (itemData.stock_quantity - quantity) + ' WHERE item_id = ' + item;
 
-                    connection.query(newQueryStr, function (err, data) {
+                    connection.query(newQueryStr, function (err, res) {
                         if (err) throw err;
 
+                        console.log(' Your total is $' + itemData.price * quantity);
+                        console.log("\n------------------------------------------------\n");
 
-                        console.log((' Your total is $' + itemData.price * quantity));
-                        console.log(("\n---------------------------------------------------------------------\n"));
 
-                        connection.end()
-
+                        connection.end();
                     });
 
                 } else {
-                    console.log(('\n Sorry, there is not enough in stock.\n'));
-                    console.log(("\n---------------------------------------------------------------------\n"));
+                    console.log('\n Sorry, there is not enough in stock.\n');
+                    console.log("\n--------------------------------------------\n");
 
                     itemDisplay();
                 }
